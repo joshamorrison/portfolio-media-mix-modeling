@@ -1,0 +1,16 @@
+# dbt profiles configuration for MMM Analytics
+
+mmm_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: sqlite
+      path: './mmm_analytics.db'
+      threads: 4
+      keepalives_idle: 0
+    
+    prod:
+      type: sqlite
+      path: './mmm_analytics_prod.db'
+      threads: 8
+      keepalives_idle: 0
