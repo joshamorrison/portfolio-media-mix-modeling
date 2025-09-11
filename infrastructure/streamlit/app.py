@@ -43,28 +43,254 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Custom CSS matching joshamorrison.github.io design
 st.markdown("""
 <style>
+    /* Import fonts matching the main website */
+    @import url('https://fonts.googleapis.com/css2?family=-apple-system,BlinkMacSystemFont,Segoe+UI,Roboto,sans-serif');
+    
+    /* Main app styling */
+    .stApp {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    /* Main content area */
+    .main .block-container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 2rem;
+        margin-top: 1rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+    
+    /* Header styling */
     .main-header {
-        font-size: 3rem;
-        color: #1f77b4;
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         text-align: center;
         margin-bottom: 2rem;
+        line-height: 1.2;
     }
+    
+    /* Sidebar styling */
+    .css-1d391kg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .css-1d391kg .stSelectbox label,
+    .css-1d391kg .stMarkdown,
+    .css-1d391kg h1 {
+        color: white !important;
+        font-weight: 600;
+    }
+    
+    /* Metric cards */
     .metric-card {
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        padding: 1rem;
-        border-radius: 10px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        padding: 1.5rem;
+        border-radius: 15px;
         color: white;
-        margin: 0.5rem 0;
-    }
-    .insight-box {
-        background-color: #f0f2f6;
-        padding: 1rem;
-        border-radius: 10px;
         margin: 1rem 0;
-        border-left: 5px solid #1f77b4;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Insight boxes */
+    .insight-box {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin: 1rem 0;
+        border-left: 5px solid #667eea;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Streamlit metric styling */
+    [data-testid="metric-container"] {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 15px;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        transition: transform 0.3s ease;
+    }
+    
+    [data-testid="metric-container"]:hover {
+        transform: translateY(-3px);
+    }
+    
+    [data-testid="metric-container"] > div {
+        color: white !important;
+    }
+    
+    [data-testid="metric-container"] label {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-weight: 600 !important;
+    }
+    
+    [data-testid="metric-container"] [data-testid="metric-value"] {
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 2rem !important;
+    }
+    
+    [data-testid="metric-container"] [data-testid="metric-delta"] {
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+    
+    /* Headers and subheaders */
+    h1, h2, h3 {
+        color: #333 !important;
+        font-weight: 600;
+    }
+    
+    .stMarkdown h1 {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .stMarkdown h2 {
+        color: #333 !important;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .stMarkdown h3 {
+        color: #667eea !important;
+    }
+    
+    /* Buttons */
+    .stButton > button {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Select boxes and inputs */
+    .stSelectbox > div > div {
+        background: white;
+        border: 2px solid #667eea;
+        border-radius: 10px;
+    }
+    
+    .stNumberInput > div > div > input {
+        background: white;
+        border: 2px solid #667eea;
+        border-radius: 10px;
+    }
+    
+    .stMultiSelect > div > div {
+        background: white;
+        border: 2px solid #667eea;
+        border-radius: 10px;
+    }
+    
+    .stSlider > div > div > div {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+    }
+    
+    /* Plotly charts */
+    .js-plotly-plot .plotly .modebar {
+        background: rgba(255, 255, 255, 0.8) !important;
+        border-radius: 10px;
+    }
+    
+    /* Data frames */
+    .stDataFrame {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Spinner */
+    .stSpinner > div {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 50%;
+    }
+    
+    /* Alert boxes */
+    .stAlert {
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stSuccess {
+        background: linear-gradient(45deg, #28a745, #20c997);
+        color: white;
+    }
+    
+    .stWarning {
+        background: linear-gradient(45deg, #ffc107, #fd7e14);
+        color: white;
+    }
+    
+    .stInfo {
+        background: linear-gradient(45deg, #17a2b8, #6f42c1);
+        color: white;
+    }
+    
+    /* Floating elements animation */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    .floating-element {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Professional spacing and typography */
+    .stMarkdown p {
+        line-height: 1.6;
+        color: #666;
+    }
+    
+    /* Custom highlight class */
+    .highlight {
+        color: #667eea;
+        font-weight: 600;
+    }
+    
+    /* Card-like containers */
+    div[data-testid="column"] > div {
+        background: white;
+        border-radius: 15px;
+        padding: 1rem;
+        margin: 0.5rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    div[data-testid="column"]:hover > div {
+        transform: translateY(-5px);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -179,9 +405,12 @@ def main():
                 unsafe_allow_html=True)
     
     st.markdown("""
-    Welcome to the **Media Mix Modeling Platform** - your comprehensive solution for marketing attribution, 
-    budget optimization, and cross-channel performance analysis.
-    """)
+    <div style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: #666;">
+    <strong>Advanced Media Mix Models & Econometric Forecasting</strong><br>
+    Optimize campaign spend and channel allocation with <span class="highlight">real-time performance data</span> 
+    and <span class="highlight">predictive analytics</span> to maximize ROI.
+    </div>
+    """, unsafe_allow_html=True)
     
     # Sidebar
     st.sidebar.title("Navigation")
@@ -575,3 +804,15 @@ def show_settings():
 
 if __name__ == "__main__":
     main()
+    
+    # Footer
+    st.markdown("""
+    <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 15px; color: white;">
+        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">
+            <strong>Joshua Morrison</strong> | AI/ML Transformation Partner<br>
+            <a href="https://joshamorrison.github.io" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">🌐 Portfolio</a> | 
+            <a href="https://github.com/joshamorrison/portfolio-media-mix-modeling" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">📁 Source Code</a> | 
+            <a href="mailto:joshamorrison@gmail.com" style="color: rgba(255,255,255,0.8); text-decoration: none;">📧 Contact</a>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
