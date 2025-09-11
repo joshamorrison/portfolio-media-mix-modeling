@@ -19,17 +19,21 @@ import os
 from datetime import datetime, timedelta
 import json
 
-# Add project root to path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+# Add project root to path - works for both local and Streamlit Cloud
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(os.path.dirname(current_dir))
+sys.path.insert(0, project_root)
 
 # Import MMM components
 try:
     from src.attribution.attribution_engine import AttributionEngine
     from src.optimization.budget_optimizer import BudgetOptimizer
     from src.reports.executive_reporter import ExecutiveReporter
-except ImportError:
-    st.error("Could not import MMM components. Please ensure you're running from the project root.")
-    st.stop()
+    MMM_COMPONENTS_AVAILABLE = True
+except ImportError as e:
+    st.warning(f"Could not import MMM components: {e}")
+    st.info("Running in demo mode with synthetic data only.")
+    MMM_COMPONENTS_AVAILABLE = False
 
 # Page configuration
 st.set_page_config(
