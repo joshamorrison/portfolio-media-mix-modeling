@@ -244,13 +244,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-For technical questions or implementation guidance:
-- **Joshua Morrison** - [joshamorrison@gmail.com](mailto:joshamorrison@gmail.com)
-- **LinkedIn** - [linkedin.com/in/joshamorrison](https://www.linkedin.com/in/joshamorrison)
-- **GitHub** - [github.com/joshamorrison](https://github.com/joshamorrison)
+**Joshua Morrison** - Senior ML Engineer & Data Scientist
+
+- **📧 Email**: [joshamorrison@gmail.com](mailto:joshamorrison@gmail.com)
+- **💼 LinkedIn**: [linkedin.com/in/joshamorrison](https://www.linkedin.com/in/joshamorrison)
+- **🌐 Portfolio**: [joshamorrison.github.io](https://joshamorrison.github.io)
+- **🐙 GitHub**: [github.com/joshamorrison](https://github.com/joshamorrison)
 
 ---
 
-**⭐ Enterprise MMM platform ready for real campaigns!**
+**⭐ Found this valuable? Star the repo and connect on LinkedIn!**
 
 *Advanced media mix modeling with dbt integration - the future of marketing attribution is here!* 🚀✨
